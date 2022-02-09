@@ -1,6 +1,6 @@
 node() {
 	stage("Build image") {
-		docker.image('gradle:latest') { 
+		docker.image('gradle:latest').inside() { 
 			checkout scm
 			sh "javac src/main/java/com/coveros/demo/helloworld/HelloWorld.java"
 			docker.withRegistry('https://hub.docker.com/', 'dockerhub-user') {
